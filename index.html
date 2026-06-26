@@ -39,16 +39,11 @@
     padding: 8px;
     background: rgba(255,255,255,0.08);
     border-radius: 10px;
-    backdrop-filter: blur(5px);
   }
 
   #output {
     margin-top: 20px;
     padding: 10px;
-  }
-
-  h2 {
-    letter-spacing: 2px;
   }
 </style>
 
@@ -58,7 +53,6 @@
 
 <h2>ALFABETO SEGRETO</h2>
 
-<!-- BARRA -->
 <div id="barra"></div>
 
 <br>
@@ -76,19 +70,20 @@
 
 <br><br>
 
-<button onclick="invia()" style="font-size:18px;">INVIA</button>
-<button onclick="reset()" style="font-size:18px;">RESET</button>
+<button onclick="invia()">INVIA</button>
+<button onclick="reset()">RESET</button>
 
 <p id="codice"></p>
-
 <div id="output"></div>
 
 <script>
 
 let codiceInterno = "";
 
-/* aggiunge simbolo */
+/* 🧩 CLICK SIMBOLI */
 function aggiungi(valore, imgSrc) {
+
+  console.log("cliccato:", valore);
 
   let img = document.createElement("img");
   img.src = imgSrc;
@@ -96,10 +91,12 @@ function aggiungi(valore, imgSrc) {
 
   document.getElementById("barra").appendChild(img);
 
-  codiceInterno += valore.toUpperCase();
+  codiceInterno += valore;
+
+  console.log("codice attuale:", codiceInterno);
 }
 
-/* POESIE SEGRETE */
+/* 📖 POESIE */
 const poesie = {
 
   "ABCDE": {
@@ -163,8 +160,10 @@ la sua destinazione`
 
 };
 
-/* mostra poesia */
+/* 🚀 INVIO */
 function invia() {
+
+  console.log("INVIA:", codiceInterno);
 
   document.getElementById("codice").innerText =
     "Codice: " + codiceInterno;
@@ -183,7 +182,7 @@ function invia() {
   }
 }
 
-/* reset */
+/* 🔄 RESET */
 function reset() {
   codiceInterno = "";
   document.getElementById("barra").innerHTML = "";
