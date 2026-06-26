@@ -2,74 +2,74 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Alfabeto Segreto</title>
+<title>ALFABETO SEGRETO</title>
 
 <style>
-  body {
-    font-family: serif;
-    text-align: center;
-    margin-top: 40px;
-    background: white;
-    color: black;
-  }
 
-  h2 {
-    margin-bottom: 20px;
-  }
+body {
+  margin: 0;
+  font-family: serif;
+  text-align: center;
+  background: white;
+  color: black;
+}
 
-  /* 🧩 TASTIERA 3x3 */
-  #tastiera {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 260px;
-    margin: 0 auto;
-  }
+/* 🔥 BARRA CODICE */
+#barra {
+  border: 2px solid #ccc;
+  min-height: 100px;
+  width: 80%;
+  max-width: 400px;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+}
 
-  #tastiera button {
-    width: 80px;
-    height: 80px;
-    border: 1px solid #ccc;
-    background: #f9f9f9;
-    cursor: pointer;
-  }
+/* 🔥 TASTIERA 3x3 PERFETTA */
+#tastiera {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
 
-  #tastiera button:hover {
-    background: #eee;
-  }
+/* BOTTONI */
+#tastiera button {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  #tastiera img {
-    width: 50px;
-    height: 50px;
-  }
+/* IMMAGINI */
+#tastiera img {
+  width: 50px;
+  height: 50px;
+}
 
-  /* BAR */
-  #barra {
-    border: 2px solid #ccc;
-    height: 120px;
-    width: 80%;
-    max-width: 400px;
-    margin: 20px auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    padding: 8px;
-  }
+/* OUTPUT */
+#output {
+  margin-top: 20px;
+  padding: 10px;
+}
 
-  #output {
-    margin-top: 20px;
-    padding: 10px;
-  }
-
-  button.control {
-    margin: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-  }
+button.control {
+  margin: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
 
 </style>
+
 </head>
 
 <body>
@@ -78,9 +78,7 @@
 
 <div id="barra"></div>
 
-<br>
-
-<!-- 🔢 TASTIERA -->
+<!-- 🔥 TASTIERA 3x3 -->
 <div id="tastiera">
 
 <button onclick="aggiungi('A','piramide.png')"><img src="piramide.png"></button>
@@ -97,9 +95,6 @@
 
 </div>
 
-<br>
-
-<!-- 🔘 CONTROLLI -->
 <button class="control" onclick="invia()">INVIA</button>
 <button class="control" onclick="reset()">RESET</button>
 
@@ -110,7 +105,7 @@
 
 let codiceInterno = "";
 
-/* ➕ aggiunta simbolo */
+/* ➕ AGGIUNGI SIMBOLO */
 function aggiungi(valore, imgSrc) {
 
   let img = document.createElement("img");
