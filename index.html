@@ -5,7 +5,7 @@
 <title>ALFABETO SEGRETO</title>
 </head>
 
-<body style="font-family:serif; text-align:center; margin-top:40px;">
+<body style="background-color:#ffffff !important; font-family:serif; text-align:center; margin-top:40px;">
 
 <h2>ALFABETO SEGRETO</h2>
 
@@ -26,18 +26,28 @@
 
 <br>
 
-<!-- BOTTONI -->
-<button onclick="aggiungi('A','piramide.png')"><img src="piramide.png" width="50"></button>
-<button onclick="aggiungi('B','serpente.png')"><img src="serpente.png" width="50"></button>
-<button onclick="aggiungi('C','macedonia.png')"><img src="macedonia.png" width="50"></button>
-<button onclick="aggiungi('D','macchina.png')"><img src="macchina.png" width="50"></button>
-<button onclick="aggiungi('E','stargate.png')"><img src="stargate.png" width="50"></button>
-<button onclick="aggiungi('F','mango.png')"><img src="mango.png" width="50"></button>
-<button onclick="aggiungi('G','cerchio.png')"><img src="cerchio.png" width="50"></button>
-<button onclick="aggiungi('H','mela.png')"><img src="mela.png" width="50"></button>
-<button onclick="aggiungi('I','arancia.png')"><img src="arancia.png" width="50"></button>
+<!-- BOTTONI A GRIGLIA 3x3 -->
+<div style="display:grid;
+            grid-template-columns:repeat(3, 70px);
+            grid-template-rows:repeat(3, 70px);
+            gap:10px;
+            justify-content:center;
+            margin:0 auto;
+            max-width:240px;">
 
-<br><br>
+  <button onclick="aggiungi('A','piramide.png')"><img src="piramide.png" width="50"></button>
+  <button onclick="aggiungi('B','serpente.png')"><img src="serpente.png" width="50"></button>
+  <button onclick="aggiungi('C','macedonia.png')"><img src="macedonia.png" width="50"></button>
+  <button onclick="aggiungi('D','macchina.png')"><img src="macchina.png" width="50"></button>
+  <button onclick="aggiungi('E','stargate.png')"><img src="stargate.png" width="50"></button>
+  <button onclick="aggiungi('F','mango.png')"><img src="mango.png" width="50"></button>
+  <button onclick="aggiungi('G','cerchio.png')"><img src="cerchio.png" width="50"></button>
+  <button onclick="aggiungi('H','mela.png')"><img src="mela.png" width="50"></button>
+  <button onclick="aggiungi('I','arancia.png')"><img src="arancia.png" width="50"></button>
+
+</div>
+
+<br>
 
 <button onclick="invia()">INVIA</button>
 <button onclick="reset()">RESET</button>
