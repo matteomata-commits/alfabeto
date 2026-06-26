@@ -50,7 +50,7 @@
 
 let codiceInterno = "";
 
-// aggiunge simbolo + immagine
+/* 🧩 aggiunge simbolo nella barra + costruisce codice */
 function aggiungi(valore, imgSrc) {
 
   let img = document.createElement("img");
@@ -62,10 +62,10 @@ function aggiungi(valore, imgSrc) {
   codiceInterno += valore;
 }
 
-// POESIE SEGRETE
+/* 📖 POESIE SEGRETE (CODICI DA 5 SIMBOLI) */
 const poesie = {
 
-  "AB": {
+  "ABCDE": {
     titolo: "Goccia di storia",
     testo: `c'è una goccia di sangue o di rugiada
 che sdrucciola tra i solchi della storia
@@ -78,7 +78,7 @@ ai primi raggi del sole essa appare
 e rifulge di morte e primavera`
   },
 
-  "BC": {
+  "BCDEA": {
     titolo: "Bandiere di pace",
     testo: `più bandiere di pace sulla terra
 basta soldati morti per la guerra
@@ -96,7 +96,7 @@ che il vento scuota le nostre bandiere
 basta bunker trincee e frontiere`
   },
 
-  "CD": {
+  "CDEAB": {
     titolo: "Luna di cenere",
     testo: `oggi la luna è una perla di cenere
 che si fa polvere tra le mie dita
@@ -114,7 +114,7 @@ oggi la luna è una perla di cenere
 che fa eco alle rovine del passato`
   },
 
-  "DE": {
+  "DEABC": {
     titolo: "Poeti erranti",
     testo: `si dovrà dire di noi poeti
 che spettiniamo il sole
@@ -126,7 +126,7 @@ la sua destinazione`
 
 };
 
-// mostra poesia
+/* 🚀 controlla codice e mostra poesia */
 function invia() {
 
   document.getElementById("codice").innerText =
@@ -146,7 +146,7 @@ function invia() {
   }
 }
 
-// reset
+/* 🔄 reset */
 function reset() {
   codiceInterno = "";
   document.getElementById("barra").innerHTML = "";
