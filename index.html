@@ -2,14 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ALFABETO SIMBOLICO</title>
+<title>ALFABETO SEGRETO</title>
 </head>
 
 <body style="font-family:serif; text-align:center; margin-top:40px;">
 
-<h2>ALFABETO SIMBOLICO</h2>
+<h2>ALFABETO SEGRETO</h2>
 
-<!-- BARRA FIXATA -->
+<!-- BARRA -->
 <div id="barra"
      style="border:2px solid black;
             height:120px;
@@ -18,19 +18,15 @@
             margin:20px auto;
             display:flex;
             flex-wrap:wrap;
-            justify-content:flex-start;
+            justify-content:center;
             align-items:center;
             gap:6px;
-            padding:8px;
-            overflow-y:auto;
-            overflow-x:hidden;
-            box-sizing:border-box;">
+            padding:8px;">
 </div>
 
 <br>
 
-<!-- 🔥 9 SIMBOLI -->
-
+<!-- BOTTONI -->
 <button onclick="aggiungi('A','piramide.png')"><img src="piramide.png" width="50"></button>
 <button onclick="aggiungi('B','serpente.png')"><img src="serpente.png" width="50"></button>
 <button onclick="aggiungi('C','macedonia.png')"><img src="macedonia.png" width="50"></button>
@@ -46,49 +42,56 @@
 <button onclick="invia()">INVIA</button>
 <button onclick="reset()">RESET</button>
 
-<p id="codice" style="color:#666;"></p>
+<p id="codice"></p>
 
-<div id="output" style="margin-top:20px; font-size:18px;"></div>
+<div id="output"></div>
 
 <script>
 
 let codiceInterno = "";
 
-// ➕ aggiunge simbolo
+// 🧩 mappa simboli → codice segreto
 function aggiungi(valore, imgSrc) {
+
+  // mostra immagine nella barra
   let img = document.createElement("img");
   img.src = imgSrc;
-  img.width = 45;
+  img.width = 50;
 
   document.getElementById("barra").appendChild(img);
 
+  // costruisce codice segreto (A B C D...)
   codiceInterno += valore;
 }
 
-// 🚀 controlla poesie
+// 📖 POESIE SEGRETE
+const poesie = {
+  "AB": {
+    titolo: "Soglia",
+    testo: "La piramide incontra il serpente nel silenzio"
+  },
+
+  "ABC": {
+    titolo: "Inizio del viaggio",
+    testo: "Tre simboli aprono la porta del senso"
+  },
+
+  "AEI": {
+    titolo: "Vertice luminoso",
+    testo: "Struttura, varco e luce si incontrano"
+  },
+
+  "BHI": {
+    titolo: "Trasformazione",
+    testo: "Il serpente diventa frutto e luce"
+  }
+};
+
+// 🚀 controlla codice e mostra poesia
 function invia() {
 
   document.getElementById("codice").innerText =
     "Codice: " + codiceInterno;
-
-  const poesie = {
-
-    "AB": {
-      titolo: "Poesia 1",
-      testo: "testo poesia 1"
-    },
-
-    "BC": {
-      titolo: "Poesia 2",
-      testo: "testo poesia 2"
-    },
-
-    "ABC": {
-      titolo: "Poesia 3",
-      testo: "testo poesia 3"
-    }
-
-  };
 
   const poesia = poesie[codiceInterno];
   const output = document.getElementById("output");
@@ -96,15 +99,15 @@ function invia() {
   if (poesia) {
     output.innerHTML =
       "<h3>" + poesia.titolo + "</h3>" +
-      "<pre style='white-space:pre-wrap'>" +
+      "<pre style='white-space:pre-wrap; font-size:18px;'>" +
       poesia.testo +
       "</pre>";
   } else {
-    output.innerHTML = "❌ nessuna poesia";
+    output.innerHTML = "❌ nessuna poesia per questo codice";
   }
 }
 
-// 🔄 reset
+// 🔄 reset tutto
 function reset() {
   codiceInterno = "";
   document.getElementById("barra").innerHTML = "";
