@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,7 @@
 
 let codiceInterno = "";
 
-/* 🧩 aggiunge simbolo nella barra + costruisce codice */
+/* 🧩 AGGIUNGE SIMBOLO + COSTRUISCE CODICE */
 function aggiungi(valore, imgSrc) {
 
   let img = document.createElement("img");
@@ -59,10 +60,13 @@ function aggiungi(valore, imgSrc) {
 
   document.getElementById("barra").appendChild(img);
 
-  codiceInterno += valore;
+  // 🔥 sempre MAIUSCOLO (IMPORTANTISSIMO)
+  codiceInterno += valore.toUpperCase();
+
+  console.log("CODICE:", codiceInterno);
 }
 
-/* 📖 POESIE SEGRETE (CODICI DA 5 SIMBOLI) */
+/* 📖 POESIE SEGRETE */
 const poesie = {
 
   "ABCDE": {
@@ -126,7 +130,7 @@ la sua destinazione`
 
 };
 
-/* 🚀 controlla codice e mostra poesia */
+/* 🚀 MOSTRA POESIA */
 function invia() {
 
   document.getElementById("codice").innerText =
@@ -146,7 +150,7 @@ function invia() {
   }
 }
 
-/* 🔄 reset */
+/* 🔄 RESET */
 function reset() {
   codiceInterno = "";
   document.getElementById("barra").innerHTML = "";
