@@ -2,34 +2,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ALFABETO SEGRETO</title>
+<title>Alfabeto Segreto</title>
 
 <style>
   body {
     font-family: serif;
     text-align: center;
     margin-top: 40px;
-    background: linear-gradient(135deg, #1b1b2f, #16213e, #0f3460);
-    color: #f5f5f5;
+    background: white;
+    color: black;
   }
 
-  button {
-    background: transparent;
-    border: none;
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  /* 🧩 TASTIERA 3x3 */
+  #tastiera {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 260px;
+    margin: 0 auto;
+  }
+
+  #tastiera button {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
     cursor: pointer;
-    margin: 5px;
-    transition: transform 0.2s;
   }
 
-  button:hover {
-    transform: scale(1.1);
+  #tastiera button:hover {
+    background: #eee;
   }
 
+  #tastiera img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* BAR */
   #barra {
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 2px solid #ccc;
     height: 120px;
-    width: 90%;
-    max-width: 500px;
+    width: 80%;
+    max-width: 400px;
     margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
@@ -37,16 +56,20 @@
     align-items: center;
     gap: 6px;
     padding: 8px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 10px;
   }
 
   #output {
     margin-top: 20px;
     padding: 10px;
   }
-</style>
 
+  button.control {
+    margin: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+</style>
 </head>
 
 <body>
@@ -57,21 +80,28 @@
 
 <br>
 
-<!-- BOTTONI -->
-<button onclick="aggiungi('A','piramide.png')"><img src="piramide.png" width="50"></button>
-<button onclick="aggiungi('B','serpente.png')"><img src="serpente.png" width="50"></button>
-<button onclick="aggiungi('C','macedonia.png')"><img src="macedonia.png" width="50"></button>
-<button onclick="aggiungi('D','macchina.png')"><img src="macchina.png" width="50"></button>
-<button onclick="aggiungi('E','stargate.png')"><img src="stargate.png" width="50"></button>
-<button onclick="aggiungi('F','mango.png')"><img src="mango.png" width="50"></button>
-<button onclick="aggiungi('G','cerchio.png')"><img src="cerchio.png" width="50"></button>
-<button onclick="aggiungi('H','mela.png')"><img src="mela.png" width="50"></button>
-<button onclick="aggiungi('I','arancia.png')"><img src="arancia.png" width="50"></button>
+<!-- 🔢 TASTIERA -->
+<div id="tastiera">
 
-<br><br>
+<button onclick="aggiungi('A','piramide.png')"><img src="piramide.png"></button>
+<button onclick="aggiungi('B','serpente.png')"><img src="serpente.png"></button>
+<button onclick="aggiungi('C','macedonia.png')"><img src="macedonia.png"></button>
 
-<button onclick="invia()">INVIA</button>
-<button onclick="reset()">RESET</button>
+<button onclick="aggiungi('D','macchina.png')"><img src="macchina.png"></button>
+<button onclick="aggiungi('E','stargate.png')"><img src="stargate.png"></button>
+<button onclick="aggiungi('F','mango.png')"><img src="mango.png"></button>
+
+<button onclick="aggiungi('G','cerchio.png')"><img src="cerchio.png"></button>
+<button onclick="aggiungi('H','mela.png')"><img src="mela.png"></button>
+<button onclick="aggiungi('I','arancia.png')"><img src="arancia.png"></button>
+
+</div>
+
+<br>
+
+<!-- 🔘 CONTROLLI -->
+<button class="control" onclick="invia()">INVIA</button>
+<button class="control" onclick="reset()">RESET</button>
 
 <p id="codice"></p>
 <div id="output"></div>
@@ -80,20 +110,16 @@
 
 let codiceInterno = "";
 
-/* 🧩 CLICK SIMBOLI */
+/* ➕ aggiunta simbolo */
 function aggiungi(valore, imgSrc) {
-
-  console.log("cliccato:", valore);
 
   let img = document.createElement("img");
   img.src = imgSrc;
-  img.width = 50;
+  img.width = 40;
 
   document.getElementById("barra").appendChild(img);
 
   codiceInterno += valore;
-
-  console.log("codice attuale:", codiceInterno);
 }
 
 /* 📖 POESIE */
@@ -160,10 +186,8 @@ la sua destinazione`
 
 };
 
-/* 🚀 INVIO */
+/* 🚀 INVIA */
 function invia() {
-
-  console.log("INVIA:", codiceInterno);
 
   document.getElementById("codice").innerText =
     "Codice: " + codiceInterno;
