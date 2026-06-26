@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>ALFABETO SEGRETO</title>
-
 <style>
-
 body {
   margin: 0;
   font-family: serif;
   text-align: center;
-  background: white;
+  background: white !important;
   color: black;
 }
 
-/* 🔥 BARRA CODICE */
+/* BARRA CODICE */
 #barra {
   border: 2px solid #ccc;
   min-height: 100px;
@@ -29,187 +22,32 @@ body {
   padding: 10px;
 }
 
-/* 🔥 TASTIERA 3x3 PERFETTA */
+/* TASTIERA 3x3 FORZATA */
 #tastiera {
-  display: grid;
-  grid-template-columns: repeat(3, 80px);
-  gap: 10px;
-  justify-content: center;
+  width: 270px;
   margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-/* BOTTONI */
 #tastiera button {
-  width: 80px;
-  height: 80px;
+  width: 33.33%;
+  height: 90px;
+  box-sizing: border-box;
   border: 1px solid #ccc;
   background: #f5f5f5;
-  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* IMMAGINI */
 #tastiera img {
   width: 50px;
   height: 50px;
 }
 
-/* OUTPUT */
 #output {
   margin-top: 20px;
-  padding: 10px;
 }
-
-button.control {
-  margin: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
 </style>
-
-</head>
-
-<body>
-
-<h2>ALFABETO SEGRETO</h2>
-
-<div id="barra"></div>
-
-<!-- 🔥 TASTIERA 3x3 -->
-<div id="tastiera">
-
-<button onclick="aggiungi('A','piramide.png')"><img src="piramide.png"></button>
-<button onclick="aggiungi('B','serpente.png')"><img src="serpente.png"></button>
-<button onclick="aggiungi('C','macedonia.png')"><img src="macedonia.png"></button>
-
-<button onclick="aggiungi('D','macchina.png')"><img src="macchina.png"></button>
-<button onclick="aggiungi('E','stargate.png')"><img src="stargate.png"></button>
-<button onclick="aggiungi('F','mango.png')"><img src="mango.png"></button>
-
-<button onclick="aggiungi('G','cerchio.png')"><img src="cerchio.png"></button>
-<button onclick="aggiungi('H','mela.png')"><img src="mela.png"></button>
-<button onclick="aggiungi('I','arancia.png')"><img src="arancia.png"></button>
-
-</div>
-
-<button class="control" onclick="invia()">INVIA</button>
-<button class="control" onclick="reset()">RESET</button>
-
-<p id="codice"></p>
-<div id="output"></div>
-
-<script>
-
-let codiceInterno = "";
-
-/* ➕ AGGIUNGI SIMBOLO */
-function aggiungi(valore, imgSrc) {
-
-  let img = document.createElement("img");
-  img.src = imgSrc;
-  img.width = 40;
-
-  document.getElementById("barra").appendChild(img);
-
-  codiceInterno += valore;
-}
-
-/* 📖 POESIE */
-const poesie = {
-
-  "ABCDE": {
-    titolo: "Goccia di storia",
-    testo: `c'è una goccia di sangue o di rugiada
-che sdrucciola tra i solchi della storia
-che rende viva la carne dell'uomo
-c'è una goccia di sangue o di rugiada
-che scorre tra gli incavi della fronte
-di gente in gente per generazioni
-sulla tacita pelle dei mortali
-ai primi raggi del sole essa appare
-e rifulge di morte e primavera`
-  },
-
-  "BCDEA": {
-    titolo: "Bandiere di pace",
-    testo: `più bandiere di pace sulla terra
-basta soldati morti per la guerra
-
-più aquiloni in volo più colombe
-basta a chi soffoca il cielo di bombe
-
-più fratelli nel mondo più alleati
-inondiamo di fiori i carri armati
-
-più libri per bambini e per bambine
-basta fucili bombe a mano e mine
-
-che il vento scuota le nostre bandiere
-basta bunker trincee e frontiere`
-  },
-
-  "CDEAB": {
-    titolo: "Luna di cenere",
-    testo: `oggi la luna è una perla di cenere
-che si fa polvere tra le mie dita
-oggi la luna è una perla di cenere
-che sporca il grano e soffoca il raccolto
-
-sferza nel cielo un tumulto di lame
-grigie le lacrime austere le nuvole
-tacito ascolto il pianto del bracciante
-che per anni ha mietuto il suo raccolto
-
-oggi la luna è una perla di cenere
-che si fa polvere tra le mie dita
-oggi la luna è una perla di cenere
-che fa eco alle rovine del passato`
-  },
-
-  "DEABC": {
-    titolo: "Poeti erranti",
-    testo: `si dovrà dire di noi poeti
-che spettiniamo il sole
-che strucchiamo la luna
-che siamo i pagliacci e i saltimbanchi
-di una carovana che fa del viaggio
-la sua destinazione`
-  }
-
-};
-
-/* 🚀 INVIA */
-function invia() {
-
-  document.getElementById("codice").innerText =
-    "Codice: " + codiceInterno;
-
-  const poesia = poesie[codiceInterno];
-  const output = document.getElementById("output");
-
-  if (poesia) {
-    output.innerHTML =
-      "<h3>" + poesia.titolo + "</h3>" +
-      "<pre style='white-space:pre-wrap; font-size:18px;'>" +
-      poesia.testo +
-      "</pre>";
-  } else {
-    output.innerHTML = "❌ nessuna poesia per questo codice";
-  }
-}
-
-/* 🔄 RESET */
-function reset() {
-  codiceInterno = "";
-  document.getElementById("barra").innerHTML = "";
-  document.getElementById("codice").innerText = "";
-  document.getElementById("output").innerHTML = "";
-}
-
-</script>
-
-</body>
-</html>
